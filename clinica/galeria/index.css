@@ -1,0 +1,24 @@
+.main-content {
+    margin: 0 auto;
+    height: auto;
+    padding: 30px;
+    border: 1px solid #7A1C2E;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-top: none;
+    background-color: #7a1c2d13;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+section > h2 {
+    color: #7A1C2E;
+    margin-bottom: 10px;
+}
+
+section > img {
+    margin: 15px;
+    border-radius: 8px;
+    width: 250px;
+    height: 150px;
+}
+  

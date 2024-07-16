@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Helvetica, sans-serif !important;
+}
+
+.sub-Nav {
+  width: 100vw;
+  height: 0.3rem;
+  color: #7a1c2e;
+  background-color: #7a1c2e;
+}
+
+.copyRight {
+  background-color: #7a1c2e;
+  color: #fff;
+  padding: 0.3rem;
+  margin-top: auto;
+}
+
+.logo {
+  background-color: #7a1c2e;
+  display: flex;
+  flex-direction: row;
+  padding: 0.3rem;
+  border: solid 0.1rem #fff;
+  border-radius: 5px;
+}
+.logo > a.logoIcone {
+  margin-right: 0.5rem;
+  position: relative;
+  top: 0.1rem;
+}
+
+.logo > a.logoIcone:hover {
+  cursor: default;
+}
+
+.logoIcone > img {
+  width: 2.5rem;
+  height: 2rem;
+  background-color: #7a1c2e;
+}
+
+.logo > a.marca {
+  color: #fff;
+}
+
+.logo > a.marca:hover {
+  color: #fff;
+  cursor: default;
+}
+
+.marca {
+  font-family: Helvetica, sans-serif;
+  background-color: #7a1c2e;
+  color: #fff;
+  margin-right: 0.1rem;
+}
+
+.btn-primary {
+  background-color: #7a1c2e;
+  text-decoration: none;
+  border: solid 1px #7a1c2e;
+  border-radius: 5px;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #8a2739;
+  border-color: #8a2739;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(253, 49, 49, 0.5);
+}
+
+.nav-link {
+  color: #7a1c2e !important;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+.form-control:focus {
+  border-color: #8a2739;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(133, 39, 57, 0.25);
+}
+
+.form-select:focus {
+  border-color: #8a2739;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(133, 39, 57, 0.25);
+}
+
+section > h2 {
+  margin-bottom: 3rem;
+}
+
+.main-content {
+  margin: 0 auto;
+  height: auto;
+  padding: 30px;
+  border: 1px solid #7a1c2e;
+  border-radius: 0 0 0.5rem 0.5rem;
+  border-top: none;
+  background-color: #7a1c2d13;
+  font-weight: 100;
+  color: #7a1c2e;
+}

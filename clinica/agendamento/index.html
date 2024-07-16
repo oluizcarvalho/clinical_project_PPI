@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínica Biazonne, atendimento diferenciado.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../global.css">    
+    <title>Clínica - Agendamento </title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="logo">
+                    <a class="navbar-brand d-flex text-align-bottom logoIcone" href="#">
+                        <img src="../image/logo2.png">
+                    </a>
+                    <a class="navbar-brand marca" href="#">Biazonne</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../galeria">Galeria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../endereco">Novo Endereço</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Agendamento</a>
+                        </li>
+                    </ul>
+                    <a href="../login" class="d-flex text-decoration-none">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
+    <div class="sub-Nav"></div>
+    <main class="container main-content">
+        <section class="container mt-3">
+            <h2>Agendamento</h2>
+            <form id="form" class="row g-2">
+                <div class="col-sm-6 mb-2 form-floating">
+                    <select class="form-select" id="especialidade" name="especialidade"
+                        aria-label="Floating label select example">
+                        <option selected></option>
+                    </select>
+                    <label for="especialidade">Especialidade</label>
+                </div>
+                <div class="col-sm-6 mb-2 form-floating">
+                    <select class="form-select" id="medico" name="medico" aria-label="Floating label select example">
+                        <option selected></option>
+                    </select>
+                    <label for="medico">Médico</label>
+                </div>
+                <div class="col-sm-3 mb-2 form-floating">
+                    <input class="form-control" type="date" name="data" id="data">
+                    <label for="data">Data</label>
+                </div>
+                <div class="col-sm-9 mb-2 form-floating">
+                    <select class="form-select" id="hora" name="hora" aria-label="Floating label select example">
+                        <option selected></option>
+                    </select>
+                    <label for="hora">Horário</label>
+                </div>
+                <div class="col-sm-9 mb-2 form-floating">
+                    <input class="form-control" type="text" id="nome" name="nome"
+                        aria-label="Floating label select example">
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="col-sm-3 mb-2 form-floating">
+                    <input class="form-control" type="text" name="sexo" id="sexo">
+                    <label for="sexo">Sexo</label>
+                </div>
+                <div class="col-sm-12 mb-2 form-floating">
+                    <input type="email" name="email" id="email" class="form-control" aria-label="Floating label input">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <button type="button" onclick="submitRequest()" class="btn btn-primary">
+                        Enviar
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                            fill="#FFFFFF">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+            <div id="alert-container" class="alert alert-dark alert-dismissible fade" role="alert">
+                <span id="alert-message"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </section>
+    </main>
+    <footer class="d-flex justify-content-center copyRight">&copy; Copyright 2022 - Todos os direitos reservados</footer>
+</body>
+
+<script>
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+
+    async function submitRequest() {
+        let form = new FormData(document.getElementById('form'));
+        let alertContainer = document.getElementById('alert-container');
+        let alert = document.getElementById('alert-message');
+        let message;
+        try {
+            alertContainer.classList.remove('show');
+            let response = await fetch("cadastraAgendamento.php", {
+                method: "POST",
+                body: form
+            });
+            if (!response.ok) throw new Error(response.statusText);
+            let json = await response.json();
+            message = json.message;
+        } catch (error) {
+            message = "Erro ao cadastrar agendamento";
+        } finally {
+            alert.innerText = message;
+            alertContainer.classList.add('show');
+        }
+    }
+
+    async function buscarMedicoPorEspecialidade(especialidade) {
+        let selectMedico = document.getElementById('medico');
+        try {
+            let response = await fetch("buscarMedicoPorEspecialidade.php?especialidade=" + especialidade);
+            let medicos = await response.json();
+            if (!response.ok) throw new Error(response.statusText);
+            selectMedico.disabled = false;
+            removeAllChildNodes(selectMedico);
+            medicos.forEach(value => {
+                const option = document.createElement('option');
+                option.text = value.nome;
+                option.value = value.id;
+                selectMedico.appendChild(option);
+            })
+        }
+        catch (e) {
+            console.error(e);
+            return;
+        }
+    }
+
+    async function buscaEspecialidade(selectEspecialidade) {
+        try {
+            let response = await fetch("buscaEspecialidade.php");
+            if (!response.ok) throw new Error(response.statusText);
+            let especialidades = await response.json();
+
+            especialidades.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.text = value;
+                selectEspecialidade.appendChild(option);
+            })
+        }
+        catch (e) {
+            console.error(e);
+            return;
+        }
+    }
+
+    async function buscarHorarioPorMedico(medicoId, data) {
+        try {
+            let selectHora = document.getElementById('hora');
+            const todosHorarios = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+            let response = await fetch("buscaHorariosOcupados.php?medico=" + medicoId + "&data=" + data);
+            if (!response.ok) throw new Error(response.statusText);
+            let horariosOcupados = await response.json();
+            let horariosDisponiveis = todosHorarios.filter(value => horariosOcupados != Number(value));
+            removeAllChildNodes(selectHora);
+            horariosDisponiveis.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.text = value;
+                selectHora.appendChild(option);
+            })
+        }
+        catch (e) {
+            console.error(e);
+            return;
+        }
+    }
+
+    window.onload = function () {
+        let selectEspecialidade = document.getElementById("especialidade");
+        let selectMedico = document.getElementById('medico');
+        let selectData = document.getElementById('data');
+
+        buscaEspecialidade(selectEspecialidade);
+
+        selectEspecialidade.addEventListener("change", (event) => {
+            let value = selectEspecialidade.options[selectEspecialidade.selectedIndex].value;
+            buscarMedicoPorEspecialidade(value);
+        });
+
+        selectData.addEventListener("change", (event) => {
+            let value = selectMedico.options[selectMedico.selectedIndex].value;
+            let data = selectData.value;
+            buscarHorarioPorMedico(value, data);
+        });
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous">
+</script>
+
+</html>

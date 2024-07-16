@@ -1,0 +1,23 @@
+body{
+    font-family: Helvetica Neue, sans-serif;
+    margin: 0;
+}
+
+.logoIcone{
+    margin-right: 0.5rem;
+    position: relative;
+    top: 0.1rem;
+}
+
+.logoIcone > img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.logoNome{
+    font-family: Helvetica, sans-serif;
+}
+
+.especialidade{
+    padding-right: 2rem;
+}
